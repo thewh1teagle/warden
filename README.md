@@ -7,5 +7,5 @@ Offline bitwarden vault in the browser!
 ## Usage
 1. Export encrypted bitwarden `json` from [vault.bitwarden.com/#tools/export](https://vault.bitwarden.com/#/tools/export)  
 Choose `.json (Encrypted)` format with `Password protected` option.
-2. Open Visit the website <a href="https://thewh1teagle.github.io/warden" target="_blank">thewh1teagle.github.io/warden</a> and open the json file
+2. Visit <a href="https://thewh1teagle.github.io/warden" target="_blank">thewh1teagle.github.io/warden</a> and open the json file
 
