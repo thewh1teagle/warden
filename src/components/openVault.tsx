@@ -58,7 +58,7 @@ interface IJSON {
     }
   
     return (
-      <div className="flex flex-col items-center justify-center mt-5 w-[300px] m-auto" onDrop={onDrop} onDragOver={onDragOver} >
+      <div className="flex flex-col items-center justify-center mt-5 w-[300px] m-auto fade-in" onDrop={onDrop} onDragOver={onDragOver} >
   
         <label htmlFor="dropzone-file" className="flex flex-col items-center justify-center w-full h-50 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-300 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-200">
           <div className="flex flex-col items-center justify-center pt-5 pb-6 h-[112px]">
@@ -86,7 +86,7 @@ interface IJSON {
         </label>
   
   
-        <div className={`relative mb-1 mt-5 w-full ${!incorrect ? 'mb-6' : null}`}>
+        <div className={`relative mb-1 mt-5 w-full`}>
           <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
             {/* <svg aria-hidden="true" className="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path></svg> */}
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 text-gray-500 dark:text-gray-400">
@@ -111,7 +111,7 @@ interface IJSON {
             placeholder="Password"
           />
         </div>
-        {incorrect && <p className="text-center text-red-400 mb-4">incorrect password</p>}
+        <p className={`text-center text-red-400 ${incorrect ? 'mb-4' : null} ${incorrect ? 'collapse-anim' : null} ${!incorrect ? 'opacity-0' : 'opacity-1'}`}>incorrect password</p>
         <button disabled={!enc} onClick={onOpen} type="button" className="w-full text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 ">OPEN</button>
       </div>
     )

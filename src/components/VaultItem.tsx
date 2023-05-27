@@ -13,7 +13,7 @@ function NoteItem({ item, onCancel }: { item: VaultItem, onCancel: VoidFunction 
         navigator.clipboard.writeText(item.notes as string)
     }
     return (
-        <div className="flex flex-col w-full items-center mb-5">
+        <div className="flex flex-col w-full items-center mb-5 fade-in">
             <div className="flex flex-col md:w-[500px] sm:w-[95vw] mt-5 items-center">
                 <span className="text-blue-500 text-2xl text-center font-normal">{item.name}</span>
                 {!copied ?
@@ -41,7 +41,7 @@ function NoteItem({ item, onCancel }: { item: VaultItem, onCancel: VoidFunction 
 
 function CardItem({ item, onCancel }: { item: VaultItem, onCancel: VoidFunction }) {
     return (
-        <div className="flex flex-col w-full items-center">
+        <div className="flex flex-col w-full items-center fade-in">
             <div className="flex flex-col w-80 mt-10">
                 <span className="text-blue-500 text-2xl text-center font-normal">{item.name}</span>
                 <div className="flex flex-col mt-9">
@@ -59,7 +59,7 @@ function CardItem({ item, onCancel }: { item: VaultItem, onCancel: VoidFunction 
 
 function LoginItem({ item, onCancel }: { item: VaultItem, onCancel: VoidFunction }) {
     return (
-        <div className="flex flex-col w-full items-center">
+        <div className="flex flex-col w-full items-center fade-in">
             <div className="flex flex-col w-80 mt-10">
                 <span className="text-blue-500 text-2xl text-center font-normal">{item.name}</span>
                 <div className="flex flex-col mt-9">
