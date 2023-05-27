@@ -53,7 +53,6 @@ async function hmac(value: ArrayBufferLike, key: ArrayBufferLike, algorithm: str
 }
 
 async function aesDecrypt(data: ArrayBuffer, iv: ArrayBuffer, key: ArrayBuffer) {
-    console.log(data, iv, key)
     const impKey = await window.crypto.subtle.importKey(
         "raw",
         key,
@@ -184,7 +183,6 @@ export async function decryptData(data: IJSON, password: string) {
     const stretchedKey = await hkdfExpand(master, "enc", 32, "sha256")
     
     const stretchedMacKey = await hkdfExpand(master, "mac", 32, "sha256")
-    console.log(salt, kdfIterations, master, stretchedKey)
     return await decryptCipherString(encData, stretchedKey, stretchedMacKey)
 }
 
