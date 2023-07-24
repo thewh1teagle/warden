@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { Vault, VaultItem } from "../utils/bitwarden"
 import { BiLockAlt } from 'react-icons/bi'
 import { MdOutlineSearch } from 'react-icons/md'
@@ -9,6 +9,26 @@ export default function VaultComponent({ vault, onLock }: { vault: Vault, onLock
     const [filterValue, setFilterValue] = useState('')
     const [folderId, setFolderId] = useState('all')
     const [item, setItem] = useState<VaultItem | null>()
+
+    function saveScroll() {
+        // Save the current scroll position in sessionStorage
+        window.sessionStorage.setItem('scrollPosition', String(window.scrollY));
+    }
+
+
+    useEffect(() => {
+        function restoreScroll() {
+            if (item) return
+            // Retrieve the saved scroll position from sessionStorage
+            const scrollPosition = window.sessionStorage.getItem('scrollPosition');
+            if (scrollPosition !== null) {
+                // Convert the stored position to a number and scroll to that position
+                window.scrollTo(0, parseInt(scrollPosition, 10));
+            }
+        }
+        if (item) return
+        restoreScroll()
+    }, [item])
 
     let items = vault.items
     if (folderId !== 'all') {
@@ -57,7 +77,10 @@ export default function VaultComponent({ vault, onLock }: { vault: Vault, onLock
                     />
                 </div>
 
-                <ItemsList items={items} setItem={setItem} />
+                <ItemsList items={items} setItem={(item) => {
+                    saveScroll()
+                    setItem(item)
+                }} />
             </div>
         </div>
     )
